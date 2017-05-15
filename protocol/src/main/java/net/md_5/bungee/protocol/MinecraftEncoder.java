@@ -19,8 +19,12 @@ public class MinecraftEncoder extends MessageToByteEncoder<DefinedPacket>
     @Override
     protected void encode(ChannelHandlerContext ctx, DefinedPacket msg, ByteBuf out) throws Exception
     {
+        protocolVersion = 47;
         Protocol.DirectionData prot = ( server ) ? protocol.TO_CLIENT : protocol.TO_SERVER;
+        int packetId = prot.getId( msg.getClass(), protocolVersion );
         DefinedPacket.writeVarInt( prot.getId( msg.getClass(), protocolVersion ), out );
         msg.write( out, prot.getDirection(), protocolVersion );
+
+        System.out.println(String.format("Sent packet 0x%02X (%d) defined as %s to %s.", packetId, packetId, msg, prot.getDirection()));
     }
 }

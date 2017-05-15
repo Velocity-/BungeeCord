@@ -32,7 +32,8 @@ public class Handshake extends DefinedPacket
     @Override
     public void write(ByteBuf buf)
     {
-        writeVarInt( protocolVersion, buf );
+        System.out.println("Handshake as " + protocolVersion + ", " + requestedProtocol);
+        writeVarInt( 47, buf );
         writeString( host, buf );
         buf.writeShort( port );
         writeVarInt( requestedProtocol, buf );

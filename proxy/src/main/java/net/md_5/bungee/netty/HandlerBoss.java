@@ -13,6 +13,7 @@ import net.md_5.bungee.connection.InitialHandler;
 import net.md_5.bungee.connection.PingHandler;
 import net.md_5.bungee.protocol.BadPacketException;
 import net.md_5.bungee.protocol.OverflowPacketException;
+import net.md_5.bungee.protocol.PacketRemapper;
 import net.md_5.bungee.protocol.PacketWrapper;
 
 /**
@@ -69,6 +70,7 @@ public class HandlerBoss extends ChannelInboundHandlerAdapter
         {
             PacketWrapper packet = (PacketWrapper) msg;
             boolean sendPacket = handler.shouldHandle( packet );
+            PacketRemapper.remap(packet);
             try
             {
                 if ( sendPacket && packet.packet != null )

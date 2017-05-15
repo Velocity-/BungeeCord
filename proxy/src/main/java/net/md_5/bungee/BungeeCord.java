@@ -598,7 +598,7 @@ public class BungeeCord extends ProxyServer
     @Override
     public int getProtocolVersion()
     {
-        return ProtocolConstants.SUPPORTED_VERSION_IDS.get( ProtocolConstants.SUPPORTED_VERSION_IDS.size() - 1 );
+        return 47;//ProtocolConstants.SUPPORTED_VERSION_IDS.get( ProtocolConstants.SUPPORTED_VERSION_IDS.size() - 1 );
     }
 
     @Override
